@@ -1,3 +1,9 @@
+/**
+ * Calculator for adding fractions
+ *
+ * @author Ivan Adamov
+ *
+ */
 package First;
 
 import java.util.Scanner;
@@ -8,13 +14,13 @@ public class Calculator
     {
         double a, b, c;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите два числа");
+        System.out.println("Введите два два числа типа %х,хххх");
         System.out.println("Введите первое число");
         a = sc.nextDouble();
         System.out.println("Введите второе число");
         b = sc.nextDouble();
         c = a + b;
-        System.out.printf ("Сумма ваших чисел равна " + c,"%-8.4f\n");
+        System.out.printf ("Сумма ваших чисел равна " + "%-8.4f", c);
 
         }
 }
