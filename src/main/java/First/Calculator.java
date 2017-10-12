@@ -14,7 +14,7 @@ public class Calculator
     {
         double a, b, c;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Введите два два числа типа %х,хххх");
+        System.out.println("Введите два дробных числа");
         System.out.println("Введите первое число");
         a = sc.nextDouble();
         System.out.println("Введите второе число");
