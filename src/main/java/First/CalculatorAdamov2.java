@@ -102,6 +102,36 @@ class MyOpFactory implements OperationFactory{
         return operation;
     }
 }
+
+class Chose {
+    public void Chose (int w){
+        System.out.println("Выберите операцию:");
+        System.out.print("1 - калькулятор\t");
+        System.out.print("2 - сравнение множества слов\t");
+        Scanner sc = new Scanner(System.in);
+        w = sc.nextInt();
+        switch (w) {
+            case 1:
+
+                break;
+
+            case 2:
+
+                break;
+
+            default: System.out.println("Недопустимая операция!!!");
+            break;
+
+        }
+    }
+
+
+}
+
+
+
+
+
 /* Создайте класс Calculator, который принимает в качестве аргумента конструктора
    экземпляр класса, реализующего интерфейс OperationFactory. Класс Calculator
    должен содержать метод exec, который обеспечивает цикл ввода оргументов и кода
@@ -153,5 +183,32 @@ class Calculator {
             int whatDo = in.nextInt();
             if (whatDo == 2) nextStep = false;
         } while (nextStep);
+    }
+}
+
+class Start {
+    public static void main(String [] args) {
+        Scanner in = new Scanner(System.in);
+        String str = "",max = "";
+        while (in.hasNextLine()){
+            str += " " + in.nextLine();
+        }
+        String[] strL = new String[90000]; //массив слов
+        for (int i = 0; i<strL.length; i++) {
+            strL[i] = "";
+        }
+        for (int i=0,k=0;i<str.length(); i++){
+            int chr = str.charAt(i); //номер символа
+            if ((chr > 47 && chr < 58) || (chr > 64 && chr < 91 ) || (chr > 96 && chr < 123) || (chr == 95)){
+                strL[k] = strL[k]+str.charAt(i); // проверяю, находится ли символ, разделяющий слова, если нет, прибавляю символ к слову, иначе, перехожу к следующему
+            }
+            else {k++;}
+        }
+        for (String aStrL : strL) {        //нахожу наибольшее слово
+            if (aStrL.length() > max.length()) {
+                max = aStrL;
+            }
+        }
+        System.out.println(max);
     }
 }
