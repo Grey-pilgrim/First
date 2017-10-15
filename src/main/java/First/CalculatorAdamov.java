@@ -8,8 +8,10 @@ package First;
 
 import java.util.Scanner;
 
-public class Calculator
+public class CalculatorAdamov
 {
+
+
     public static void main(String[] args)
     {
         double a, b, c;
