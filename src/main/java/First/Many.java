@@ -9,7 +9,7 @@
 package First;
 import java.util.Scanner;
 public class Many {
-    public static void run(String [] args) {
+    public static void run() {
         Scanner in = new Scanner(System.in);
         String str = "",max = "";
         while (in.hasNextLine()){

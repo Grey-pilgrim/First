@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CalculatorAdamov {
 
-    public static void run (String[]args){
+    public static void run (){
         //  Создаем экземпляр класса MyOpFactory
         MyOpFactory myOpFactory = new MyOpFactory();
         //  Создаем экземпляр класса Calculator
@@ -85,19 +85,19 @@ class MyOpFactory implements OperationFactory{
     public Operation getOpInstance(int op) {
         this.operationCode = op;
         switch (operationCode){
-            case '+':{
+            case 1:{
                 operation = new OpPlus();
                 break;
             }
-            case '-':{
+            case 2:{
                 operation = new OpMinus();
                 break;
             }
-            case '*':{
+            case 3:{
                 operation = new OpMultiply();
                 break;
             }
-            case '/':{
+            case 4:{
                 operation = new OpDivision();
                 break;
             }
