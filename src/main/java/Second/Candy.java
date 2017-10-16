@@ -1,21 +1,16 @@
 package Second;
 
 public class Candy extends Sweetness {
-    private static final int DEFAULT_CAL = 80;
-    private final int calorificValue;   // Каллорийность.
+    private final int calorificValue;   // Калорийность.
 
-    public Candy(String name, int weight, double price, int calorificValue) {
-        super(name, weight, price);
+    public Candy(String name, int calorificValue) {
+        super(name);
         this.calorificValue = calorificValue;
     }
 
-    public Candy(String name, int weight, double price) {
-        this(name, weight, price, DEFAULT_CAL);
-    }
-
     /**
-     * Получить каллорийность сладости.
-     * @return Каллорийность.
+     * Получить калорийность сладости.
+     * @return Калорийность.
      */
     private int getCalorificValue() {
         return calorificValue;
@@ -26,7 +21,7 @@ public class Candy extends Sweetness {
         return "Название: " + getName() +
                 "; Вес: " + getWeight() +
                 "; Цена: " + getPrice() +
-                "; Каллорийность: " + getCalorificValue();
+                "; Калорийность: " + getCalorificValue();
     }
 }
 

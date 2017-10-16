@@ -1,10 +1,11 @@
 package Second;
 
 
-import Second.RandomArray;
-import Second.Present;
-import Second.Candy;
-import Second.Jellybean;
+        import Second.RandomArray;
+        import Second.Present;
+        import Second.Candy;
+        import Second.Jellybean;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -20,10 +21,11 @@ public class Main {
     }
 
     private void runTaskTwo() {
-        Present present = new Present();
-        present.addSweetness(new Candy("Candy", 50, 55.6))
-                .addSweetness(new Jellybean("Jellybean", 80, 85, "Синий"))
-                .addSweetness(new Jellybean("JellybeanSUPER", 95, 120, "Красный"));
+        int capacity = 10;     // Количество сладостей / объем подарка
+        Present present = new Present(capacity)
+                .addPossibleSweets(new Candy("Candy", 50))
+                .addPossibleSweets(new Jellybean("Jellybean", "Синий"))
+                .addPossibleSweets(new Jellybean("JellybeanSUPER", "Красный")).init();
 
         present.info();
 

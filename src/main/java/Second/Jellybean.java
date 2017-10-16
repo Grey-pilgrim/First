@@ -1,10 +1,11 @@
 package Second;
 
+
 public class Jellybean extends Sweetness {
     private final String packageColor;
 
-    public Jellybean(String name, int weight, double price, String packageColor) {
-        super(name, weight, price);
+    public Jellybean(String name, String packageColor) {
+        super(name);
         this.packageColor = packageColor;
     }
 

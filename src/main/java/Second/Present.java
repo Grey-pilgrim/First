@@ -4,26 +4,33 @@ import Second.Sweetness;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Подарок.
  */
 public class Present {
-    private final List<Sweetness> sweetStuff;   // Сладости.
+    private final List<Sweetness> possibleSweets;   // Возможные сладости.
+    private final List<Sweetness> sweetStuff;       // Сформированный список сладостей.
+    private final Random random;
+    private final int capacity;
 
     /**
      * Конструктор по умолчанию.
      */
-    public Present() {
-        this.sweetStuff = new ArrayList<>();
+    public Present(int capacity) {
+        this.capacity = capacity;
+        this.possibleSweets = new ArrayList<>();
+        this.sweetStuff = new ArrayList<>(capacity);
+        this.random = new Random(System.currentTimeMillis());
     }
 
     /**
-     * Добавить сладость.
+     * Добавить возможную сладость.
      * @return Подарок.
      */
-    public Present addSweetness(Sweetness sweetness) {
-        this.sweetStuff.add(sweetness);
+    public Present addPossibleSweets(Sweetness sweetness) {
+        this.possibleSweets.add(sweetness);
         return this;
     }
 
@@ -61,5 +68,16 @@ public class Present {
         for (Sweetness sweetness : sweetStuff) {
             System.out.println(sweetness.toString());
         }
+    }
+
+    /**
+     * Инициализация подарка (заполнение сладостями)
+     * @return Подарок.
+     */
+    public Present init() {
+        for (int i = 0; i < capacity; i++) {
+            sweetStuff.add(possibleSweets.get(random.nextInt(possibleSweets.size())));
+        }
+        return this;
     }
 }
