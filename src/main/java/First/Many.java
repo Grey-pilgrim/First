@@ -10,26 +10,35 @@ package First;
 import java.util.Scanner;
 public class Many {
     public static void run() {
-        System.out.println("Введите несколько слов различной длины");
-        Scanner in = new Scanner(System.in);
-        final char underLine = '_';
-        final char nextLine = '\n';
-        String line, max = "";
-        int start = 0;
-        while (in.hasNextLine()){
-            line = in.nextLine();
-            for (int i=0; i<line.length(); i++){
-                int chr = line.charAt(i); //номер символа
-                if ((chr > 47 && chr < 58) || (chr > 64 && chr < 91 ) || (chr > 96 && chr < 123) || (chr == 95)){
-                } else {
-                    if ( i - start > max.length() ) {
-                        max = line.substring( start, i );
-                    }
-                    start = i+1;
-                }
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Введите слова через пробел");
+        String str=sc.nextLine();
+        str=str+"";
+        int len=str.length();
+        String k="",max="";
+
+        char ch;
+        int p,max1=0;
+
+        for (int i=0;i<len;i++)
+        {
+            ch=str.charAt(i);
+            if ( ch!=' ')
+            {
+                k=k+ch;
             }
-            start = 0;
+            else {
+                p=k.length();
+                if (p>max1) {
+                    max1=p;
+                    max=k;
+                }
+                k="";
+            }
+
         }
-        System.out.println("Самое длинное слово" + max);
+        System.out.println("Самое длинное словл это "+max+"\n Длина слова "+max1);
     }
+
+
 }
