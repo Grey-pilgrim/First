@@ -26,7 +26,7 @@ public class Main {
         Map<String, Integer> stat = new TreeMap<>();
 
         for (; scanner.hasNextLine();) {
-            String[] nextLine = scanner.nextLine().toLowerCase().split("[^a-zA-Z]+");
+            String[] nextLine = scanner.nextLine().split("[^a-zA-Z]+");
             for (String word : nextLine) {
                 if(!word.isEmpty()) {
                     stat.put(word, 1 + Optional
