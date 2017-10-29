@@ -10,33 +10,45 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.*;
+import java.io.InputStream;
 
 public class Main {
 
-    public static void main (String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
 
-        Scanner scanner = new Scanner(
+        InputStream in = System.in;
 
-                new FileInputStream(
-                        new File("test.txt"))
-        );
-        Map<String, Integer> map = new HashMap<>();
-        for (; scanner.hasNextLine();) {
-            String [] nextLane = scanner.nextLine(). toLowerCase().split("[^a-z]+");
-            for (String word: nextLane) {
-                map.put(word, (map.containsKey(word) ? map.get(word) + 1 : 1));
+        File file = new File("test.txt");
+        in = new FileInputStream(file);
+
+        Scanner scanner = new Scanner(in);
+
+        Map<String, Integer> stat = new HashMap<>();
+
+        for (; scanner.hasNextLine(); ) {
+            String[] nextLine = scanner.nextLine().toLowerCase().split("[^a-zA-Z]+");
+            for (String word : nextLine) {
+                if (!word.isEmpty()) {
+                    stat.put(word, 1 + Optional
+                            .ofNullable(stat.get(word))
+                            .orElse(0));
                 }
-        }
-        Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
-        String word = "";
-        int max = 0;
-        for (Map.Entry <String, Integer> entry : entrySet) {
-            if (entry.getValue() > max) {
-                max = entry.getValue();
-            word = entry.getKey();
             }
         }
-        System.out.println ("Word - " + word + ". Count = " + max);
-    }
 
-  }
+        Set<Map.Entry<String, Integer>> entrySet = stat.entrySet();
+        TreeSet<Map.Entry<String, Integer>> sorted
+                = new TreeSet<>((e1, e2) -> {
+            int cmp = e1.getValue().compareTo(e2.getValue());
+            return -1 * (cmp == 0 ? e1.getKey().compareTo(e2.getKey()) : cmp);
+        });
+        sorted.addAll(entrySet);
+        sorted.forEach(e -> System.out.println(e.getValue() + "\t" + e.getKey()));
+
+        Scanner s2 = new Scanner(System.in);
+        for (; s2.hasNextLine(); ) {
+            String line = s2.nextLine();
+            System.out.println(line);
+        }
+    }
+}
