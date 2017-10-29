@@ -14,7 +14,7 @@ import java.io.InputStream;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main (String[] args) throws FileNotFoundException {
 
         InputStream in = System.in;
 
@@ -23,12 +23,12 @@ public class Main {
 
         Scanner scanner = new Scanner(in);
 
-        Map<String, Integer> stat = new HashMap<>();
+        Map<String, Integer> stat = new TreeMap<>();
 
-        for (; scanner.hasNextLine(); ) {
+        for (; scanner.hasNextLine();) {
             String[] nextLine = scanner.nextLine().toLowerCase().split("[^a-zA-Z]+");
             for (String word : nextLine) {
-                if (!word.isEmpty()) {
+                if(!word.isEmpty()) {
                     stat.put(word, 1 + Optional
                             .ofNullable(stat.get(word))
                             .orElse(0));
@@ -37,18 +37,6 @@ public class Main {
         }
 
         Set<Map.Entry<String, Integer>> entrySet = stat.entrySet();
-        TreeSet<Map.Entry<String, Integer>> sorted
-                = new TreeSet<>((e1, e2) -> {
-            int cmp = e1.getValue().compareTo(e2.getValue());
-            return -1 * (cmp == 0 ? e1.getKey().compareTo(e2.getKey()) : cmp);
-        });
-        sorted.addAll(entrySet);
-        sorted.forEach(e -> System.out.println(e.getValue() + "\t" + e.getKey()));
-
-        Scanner s2 = new Scanner(System.in);
-        for (; s2.hasNextLine(); ) {
-            String line = s2.nextLine();
-            System.out.println(line);
-        }
+        entrySet.forEach(e->System.out.println(e.getValue()+"\t"+e.getKey()));
     }
 }
