@@ -1,31 +1,52 @@
 package First.calculator;
 
-import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
+
 public class MyOpFactoryTest {
+
+    private OperationFactory operationFactory;
 
     @Before
     public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
+        operationFactory = new MyOpFactory();
     }
 
     @Test
     public void getOpInstancePlus() throws Exception {
-        Object operation = new MyOpFactory().getOpInstance(1);
+        Operation operation = operationFactory.getOpInstance(1);
 
-        Assert.assertTrue("Ошибка операции", (operation instanceof OpPlus));
+        assertTrue("Ошибка операции сложение", (operation instanceof OpPlus));
     }
+
+    @Test
+    public void getOpInstanceMin() throws Exception {
+        Operation operation = operationFactory.getOpInstance(2);
+
+        assertTrue("Ошибка операции вычитание", (operation instanceof OpMinus));
+    }
+
+    @Test
+    public void getOpInstanceMultiply() throws Exception {
+        Operation operation = operationFactory.getOpInstance(3);
+
+        assertTrue("Ошибка операции умножение", (operation instanceof OpMultiply));
+    }
+
+    @Test
+    public void getOpInstanceDivision() throws Exception {
+        Operation operation = operationFactory.getOpInstance(4);
+
+        assertTrue("Ошибка операции деление", (operation instanceof OpDivision));
+    }
+
     @Test
     public void getOpInstanceNull() throws Exception {
-        Object operation = new MyOpFactory().getOpInstance(5);
+        Operation operation = operationFactory.getOpInstance(12);
 
-        Assert.assertTrue("Ошибка операции", (operation == null));
+        assertTrue("Ошибка при получении неозвестной операции", (operation == null));
     }
     }
 
