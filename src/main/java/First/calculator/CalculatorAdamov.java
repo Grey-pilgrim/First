@@ -4,7 +4,7 @@
  * @author Ivan Adamov
  *
  */
-package First;
+package First.calculator;
 
 import java.util.Scanner;
 
