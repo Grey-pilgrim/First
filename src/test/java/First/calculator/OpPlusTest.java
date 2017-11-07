@@ -1,7 +1,9 @@
 package First.calculator;
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 public class OpPlusTest {
     private OpPlus opPlus;
@@ -11,11 +13,11 @@ public class OpPlusTest {
         opPlus = new OpPlus();
     }
 
-    @org.junit.After
+    @After
     public void tearDown() throws Exception {
     }
 
-    @org.junit.Test
+    @Test
     public void addPositiveNumbers() throws Exception {
         double actualResult = opPlus.exec(1, 8);
         Assert.assertTrue("Error", 9 == actualResult);
