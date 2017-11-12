@@ -1,12 +1,17 @@
 package First.calculator;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class OpMultiplyTest {
+    private OpMultiply opMultiply;
+
     @Before
     public void setUp() throws Exception {
+        opMultiply = new OpMultiply();
+
     }
 
     @After
@@ -14,7 +19,9 @@ public class OpMultiplyTest {
     }
 
     @Test
-    public void exec() throws Exception {
+    public void addPositiveNumbers() throws Exception {
+        double actualResult = opMultiply.exec(3, 3);
+        Assert.assertTrue("Error", 9 == actualResult);
     }
 
 }
